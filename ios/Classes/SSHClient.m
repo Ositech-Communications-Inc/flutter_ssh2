@@ -54,11 +54,12 @@ int uploadedPerc = 0;
   }
   
   channel.ptyTerminalType = type;
-  dispatch_queue_t my_queue = dispatch_queue_create("queue_identifier", 0);
+   dispatch_queue_t my_queue = dispatch_queue_create("queue_identifier", 0);
 
   dispatch_async(dispatch_get_main_queue(), ^
   {
-      [channel startShellWithCallbackQueue:my_queue error:error];
+    [channel startShell:error];
+      // [channel startShellWithCallbackQueue:my_queue error:error];
   });
 }
 

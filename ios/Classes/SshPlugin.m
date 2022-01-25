@@ -167,18 +167,18 @@
         case LIBSSH2_HOSTKEY_TYPE_DSS:
           keyType = @"ssh-dsa";
           break;
-        case LIBSSH2_HOSTKEY_TYPE_ECDSA_256:
-          keyType = @"ecdsa-sha2-nistp256";
-          break;
-        case LIBSSH2_HOSTKEY_TYPE_ECDSA_384:
-          keyType = @"ecdsa-sha2-nistp384";
-          break;
-        case LIBSSH2_HOSTKEY_TYPE_ECDSA_521:
-          keyType = @"ecdsa-sha2-nistp521";
-          break;
-        case LIBSSH2_HOSTKEY_TYPE_ED25519:
-          keyType = @"ssh-ed25519";
-          break;
+//        case LIBSSH2_HOSTKEY_TYPE_ECDSA_256:
+//          keyType = @"ecdsa-sha2-nistp256";
+//          break;
+//        case LIBSSH2_HOSTKEY_TYPE_ECDSA_384:
+//          keyType = @"ecdsa-sha2-nistp384";
+//          break;
+//        case LIBSSH2_HOSTKEY_TYPE_ECDSA_521:
+//          keyType = @"ecdsa-sha2-nistp521";
+//          break;
+//        case LIBSSH2_HOSTKEY_TYPE_ED25519:
+//          keyType = @"ssh-ed25519";
+//          break;
         case LIBSSH2_HOSTKEY_TYPE_UNKNOWN:
           keyType = @"unknown";
           break;
