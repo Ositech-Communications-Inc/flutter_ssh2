@@ -1,20 +1,17 @@
 name: ssh2
 description: SSH and SFTP client for Flutter. Wraps iOS library NMSSH and Android library JSch.
-version: 2.2.3
+version: 2.2.4  # Increment the version number for this update
 homepage: https://github.com/jda258/flutter_ssh2
 
 environment:
-  sdk: '>=2.17.0 <4.0.0'
-  flutter: '>=3.0.0'
+  sdk: '>=2.17.0 <4.0.0'  # Ensure compatibility with Dart 2.17+ up to 4.0
+  flutter: '>=3.0.0'      # Ensure compatibility with Flutter 3.0+
 
 dependencies:
   flutter:
     sdk: flutter
 
-  uuid: ^4.5.0
-
-# For information on the generic Dart part of this file, see the
-# following page: https://www.dartlang.org/tools/pub/pubspec
+  uuid: ^4.5.0  # Latest uuid version compatible with Flutter 3.0
 
 # The following section is specific to Flutter.
 flutter:
