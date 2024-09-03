@@ -1,9 +1,10 @@
 import 'dart:async';
 import 'dart:io';
-import 'package:flutter/services.dart';
+
 import 'package:flutter/material.dart';
-import 'package:ssh2/ssh2.dart';
+import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:ssh2/ssh2.dart';
 
 void main() => runApp(new MyApp());
 
@@ -73,7 +74,8 @@ pFkz72+8eA2cnbWUqHt9WqMUgUBYZTMESzQrTf7+q+0gWf49AZJ/QQ==
 
     try {
       result = await client.connect() ?? 'Null result';
-      if (result == "session_connected") result = await client.execute("ps") ?? 'Null result';
+      if (result == "session_connected")
+        result = await client.execute("ps") ?? 'Null result';
       await client.disconnect();
     } on PlatformException catch (e) {
       String errorMessage = 'Error: ${e.code}\nError Message: ${e.message}';
@@ -97,7 +99,8 @@ pFkz72+8eA2cnbWUqHt9WqMUgUBYZTMESzQrTf7+q+0gWf49AZJ/QQ==
       username: username,
       passwordOrKey: {
         "privateKey": privateKey,
-        "passphrase": passphrase, // Remove line if key is not password protected
+        "passphrase":
+            passphrase, // Remove line if key is not password protected
       },
     );
 
@@ -106,17 +109,17 @@ pFkz72+8eA2cnbWUqHt9WqMUgUBYZTMESzQrTf7+q+0gWf49AZJ/QQ==
 
       if (result == "session_connected") {
         result = await client.startShell(
-            ptyType: "xterm",
-            callback: (dynamic res) {
-              setState(() {
-                result += res;
-              });
-            }) ?? 'Null result';
+                ptyType: "xterm",
+                callback: (dynamic res) {
+                  setState(() {
+                    result += res;
+                  });
+                }) ??
+            'Null result';
 
         if (result == "shell_started") {
           print(await client.writeToShell("echo hello > world\n"));
           print(await client.writeToShell("cat world\n"));
-
         }
 
         // Disconnect from SSH client
@@ -178,23 +181,25 @@ pFkz72+8eA2cnbWUqHt9WqMUgUBYZTMESzQrTf7+q+0gWf49AZJ/QQ==
 
           // Upload test file
           print(await client.sftpUpload(
-            path: file.path,
-            toPath: ".",
-            callback: (progress) async {
-              print(progress);
-              // if (progress == 30) await client.sftpCancelUpload();
-            },
-          ) ?? 'Upload failed');
+                path: file.path,
+                toPath: ".",
+                callback: (progress) async {
+                  print(progress);
+                  // if (progress == 30) await client.sftpCancelUpload();
+                },
+              ) ??
+              'Upload failed');
 
           // Download test file
           print(await client.sftpDownload(
-            path: fileName,
-            toPath: tempPath,
-            callback: (progress) async {
-              print(progress);
-              // if (progress == 20) await client.sftpCancelDownload();
-            },
-          ) ?? 'Download failed');
+                path: fileName,
+                toPath: tempPath,
+                callback: (progress) async {
+                  print(progress);
+                  // if (progress == 20) await client.sftpCancelDownload();
+                },
+              ) ??
+              'Download failed');
 
           // Delete the remote test file
           print(await client.sftpRm(fileName));
@@ -210,8 +215,6 @@ pFkz72+8eA2cnbWUqHt9WqMUgUBYZTMESzQrTf7+q+0gWf49AZJ/QQ==
           // Disconnect from SSH client
           await client.disconnect();
         }
-
-
       }
     } on PlatformException catch (e) {
       String errorMessage = 'Error: ${e.code}\nError Message: ${e.message}';
@@ -230,7 +233,7 @@ pFkz72+8eA2cnbWUqHt9WqMUgUBYZTMESzQrTf7+q+0gWf49AZJ/QQ==
     Widget renderButtons() {
       return ButtonTheme(
         padding: EdgeInsets.all(5.0),
-        child: ButtonBar(
+        child: OverflowBar(
           children: <Widget>[
             TextButton(
               style: buttonStyle,
