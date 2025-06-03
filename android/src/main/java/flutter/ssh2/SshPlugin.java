@@ -1,10 +1,10 @@
 package flutter.ssh2;
 
-import android.util.Log;
-import android.os.Handler;
-import android.os.Looper;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 
@@ -26,15 +26,15 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Properties;
 import java.util.Vector;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import io.flutter.embedding.engine.plugins.FlutterPlugin;
 import io.flutter.plugin.common.BinaryMessenger;
@@ -53,13 +53,6 @@ public class SshPlugin implements MethodCallHandler, StreamHandler, FlutterPlugi
   private BroadcastReceiver chargingStateChangeReceiver;
   private MethodChannel methodChannel;
   private EventChannel eventChannel;
-
-  /** Plugin registration. */
-  @SuppressWarnings("deprecation")
-  public static void registerWith(io.flutter.plugin.common.PluginRegistry.Registrar registrar) {
-    final SshPlugin instance = new SshPlugin();
-    instance.onAttachedToEngine(registrar.context(), registrar.messenger());
-  }
 
   @Override
   public void onAttachedToEngine(FlutterPluginBinding binding) {
